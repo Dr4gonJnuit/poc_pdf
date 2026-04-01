@@ -2,7 +2,8 @@
 
 ## 📄 Description courte
 
-> API Spring Boot permettant de générer des fichiers PDF (lettres) dynamiquement à partir de données structurées (adresse, contenu, logo et signature).
+Exercice pour le cours de DAB à l'IFAPME demandant de faire :
+API Spring Boot permettant de générer des fichiers PDF (lettres) dynamiquement à partir de données structurées (adresse, contenu, logo et signature).
 
 ---
 
