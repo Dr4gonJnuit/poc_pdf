@@ -6,7 +6,10 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.itextpdf.html2pdf.HtmlConverter;
+import com.itextpdf.io.font.constants.StandardFonts;
 import com.itextpdf.io.image.ImageDataFactory;
+import com.itextpdf.kernel.font.PdfFont;
+import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
@@ -18,9 +21,10 @@ import com.itextpdf.layout.element.IElement;
 import com.itextpdf.layout.element.Image;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.element.Text;
 import com.itextpdf.layout.properties.HorizontalAlignment;
-import com.itextpdf.layout.properties.UnitValue;
 import com.itextpdf.layout.properties.TextAlignment;
+import com.itextpdf.layout.properties.UnitValue;
 
 import be.charleroi.ifapme.dab.jonasbette.poc_pdf.domain.Letter;
 import be.charleroi.ifapme.dab.jonasbette.poc_pdf.exceptions.PdfCreationException;
@@ -76,11 +80,14 @@ public class PdfRenderer {
             document.add(content);
 
             // Signature (alignée en bas à droite)
-            Paragraph signature = new Paragraph("Signature:")
+            PdfFont boldFont = PdfFontFactory.createFont(StandardFonts.HELVETICA_BOLD);
+            Paragraph signature = new Paragraph()
+                    .add(new Text("Signature:").setFont(boldFont))
                     .add("\n")
                     .add(letter.getSignature().format())
                     .setTextAlignment(TextAlignment.RIGHT)
                     .setMarginTop(50);
+
             document.add(signature);
 
             document.close();
