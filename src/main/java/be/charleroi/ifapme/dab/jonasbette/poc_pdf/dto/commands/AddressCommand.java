@@ -1,4 +1,4 @@
-package be.charleroi.ifapme.dab.jonasbette.poc_pdf.dto;
+package be.charleroi.ifapme.dab.jonasbette.poc_pdf.dto.commands;
 
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -6,13 +6,14 @@ import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 @Getter
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
-public class AddressDto {
+public class AddressCommand {
+
+    private String destFirstName;
+    private String destLastName;
 
     @Positive
     private Integer houseNumber;

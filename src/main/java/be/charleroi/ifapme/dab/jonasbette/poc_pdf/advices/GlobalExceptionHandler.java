@@ -14,6 +14,22 @@ import lombok.extern.slf4j.Slf4j;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<ApiResponse> handleGenericException(Exception ex) {
+        // Handle generic exceptions
+
+        log.error("An unexpected error occurred: {}", ex.getMessage(), ex);
+
+        ApiResponse errorResponse = ApiResponse.builder()
+                .status(HttpStatus.INTERNAL_SERVER_ERROR.value())
+                .reasonPhrase(HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase())
+                .message("An unexpected error occurred")
+                .details(ex.getMessage())
+                .build();
+
+        return ResponseEntity.internalServerError().body(errorResponse);
+    }
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ApiResponse> handleMethodArgumentNotValidException(MethodArgumentNotValidException ex) {
         // Handle validation errors

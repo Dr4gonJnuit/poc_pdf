@@ -1,16 +1,14 @@
-package be.charleroi.ifapme.dab.jonasbette.poc_pdf.dto;
+package be.charleroi.ifapme.dab.jonasbette.poc_pdf.dto.commands;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 @Getter
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
-public class SignatureDto {
+public class SignatureCommand {
 
     @NotBlank
     private String firstName;

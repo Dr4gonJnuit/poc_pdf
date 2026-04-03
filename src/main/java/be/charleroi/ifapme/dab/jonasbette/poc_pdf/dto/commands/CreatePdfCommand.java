@@ -1,7 +1,5 @@
 package be.charleroi.ifapme.dab.jonasbette.poc_pdf.dto.commands;
 
-import be.charleroi.ifapme.dab.jonasbette.poc_pdf.dto.AddressDto;
-import be.charleroi.ifapme.dab.jonasbette.poc_pdf.dto.SignatureDto;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
@@ -10,7 +8,7 @@ import lombok.Getter;
 public class CreatePdfCommand {
 
     @NotNull
-    private AddressDto address;
+    private AddressCommand address;
 
     @NotBlank // ni null ni vide -> "", " ", null n'est pas accepté mais "abc" ou "123" sont acceptés
     private String contenu;
@@ -23,6 +21,6 @@ public class CreatePdfCommand {
      * complex (e.g., an image or a digital signature).
      */
     @NotNull
-    private SignatureDto signature;
+    private SignatureCommand signature;
 
 }
